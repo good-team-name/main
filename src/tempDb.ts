@@ -39,6 +39,11 @@ export const db: Record<string, SkillBig> = {
             name: "Khan Academy",
             url: "https://www.khanacademy.org/math/calculus-1",
             description: "Khan Academy"
+        },
+        {
+            name: "freeCodeCamp",
+            url: "https://www.youtube.com/watch?v=HfACrKJ_Y2w&t=2",
+            description: "Free Code Camp"
         }],
         preSkills: [],
         postSkills: [],
