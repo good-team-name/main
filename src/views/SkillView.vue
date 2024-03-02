@@ -36,52 +36,184 @@ watch(selectedID, (id) => {
 <template>
     <div class="skillView">
         <div class="left-side">
-            <SmallSkill @click="router.push(`/skill/${prereq.id}`)"  v-for="prereq in getPrequesites(currRoute)" :skill="prereq"></SmallSkill>
+
+
+                <div class="resources">
+                <h2>Prereqs</h2>
+
+            </div>
+            <div class="upNext">
+
+                <div class="containerNext" v-for="postReq in getPrequesites(currRoute)">
+                    <div class="middleLineSmall"></div>
+                    <SmallSkill class="skillLink" @click="router.push(`/skill/${postReq.id}`)" :skill="postReq">
+                    </SmallSkill>
+
+
+                </div>
+
+
+
+            </div>
         </div>
 
-        
+
         <div class="overlay">
+
+            <div class="middleLine"></div>
             <div class="image" :style="`background-image: url(${skill.iconUrl});`"></div>
             <h1>{{ skill.name }}</h1>
 
-           
+
         </div>
 
-        <div class="right-side">
+        <div class="right-side" v-if="getUnlocked(currRoute).length >0">
 
             <div class="resources">
                 <h2>Level Up!</h2>
-            
+
             </div>
-            <SmallSkill @click="router.push(`/skill/${postReq.id}`)"  v-for="postReq in getUnlocked(currRoute)" :skill="postReq"></SmallSkill>
+            <div class="upNext">
+
+                <div class="containerNext" v-for="postReq in getUnlocked(currRoute)">
+                    <div class="middleLineSmall"></div>
+                    <SmallSkill class="skillLink" @click="router.push(`/skill/${postReq.id}`)" :skill="postReq">
+                    </SmallSkill>
+
+
+                </div>
+
+
+
+            </div>
+
+
 
         </div>
-       
-    </div>
 
+    </div>
 </template>
 
 <style scoped lang="scss">
-
 .resources {
-    background-color: $sc;
+    // background-color: $sc;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.left-side, .right-side {
+
+.left-side,
+.right-side {
     // background-color: red;
     width: 37vw;
+
 }
+
+
+.left-side {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25% 50% 25%;
+
+    .upNext {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        // background-color: red;
+
+
+        border-right: 3px solid white;
+        // background-color: $sc;
+
+        .containerNext {
+            // transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .middleLineSmall {
+                // background-color: white;
+                z-index: -1;
+                right: -200px;
+                position: absolute;
+                width: 300px;
+                height: 0px;
+                border-top: 3px dotted white;
+            }
+
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+
+            
+
+
+        }
+    }
+
+
+}
+
+.right-side {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25% 50% 25%;
+
+    .upNext {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        // background-color: red;
+
+
+        border-left: 3px solid white;
+        // background-color: $sc;
+
+        .containerNext {
+            // transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .middleLineSmall {
+                // background-color: white;
+                z-index: -1;
+                left: -200px;
+                position: absolute;
+                width: 300px;
+                height: 0px;
+                border-top: 3px dotted white;
+            }
+
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+
+            
+
+
+        }
+    }
+
+
+}
+
+
+
 
 .skillView {
     height: 100%;
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    
+
 }
+
 .underlay {
     height: 100%;
     width: 100%;
@@ -89,7 +221,9 @@ watch(selectedID, (id) => {
     justify-content: center;
     align-items: center;
 }
+
 .overlay {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,6 +238,8 @@ watch(selectedID, (id) => {
     h1 {
         font-size: 50px;
         text-decoration: underline;
+        position: absolute;
+        bottom: 30px;
     }
 
     .image {
@@ -113,6 +249,15 @@ watch(selectedID, (id) => {
         background-size: cover;
 
         border-radius: 100px;
+    }
+
+    .middleLine {
+        position: absolute;
+        height: 10px;
+        width: 100%;
+        background-color: white;
+
+        z-index: -1;
     }
 }
 </style>

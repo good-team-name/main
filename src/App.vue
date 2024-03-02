@@ -25,14 +25,16 @@
 
 .logo-image {
     cursor: pointer;
+    box-sizing: content-box;
+    margin: 4px;
 
 
     background-image: url('./assets/logocolor.png');
 
 
-    height: 100%;
+    height: 10vh;
     // background-color: red;
-    width: 150px;
+    width: 15vh;
 
     &:hover {
       background: url('./assets/logobnw.png');

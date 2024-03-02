@@ -15,7 +15,7 @@ const skills: Record<string, Skill> = {
             description: "Khan Academy"
         }],
         prerequisites: [],
-        unlocks: ["2"],
+        unlocks: ["2", "3"],
         id: "1"
 
     },
@@ -35,6 +35,25 @@ const skills: Record<string, Skill> = {
         prerequisites: ["1"],
         unlocks: [],
         id: "2"
+
+
+    },
+    "3": {
+        name: "Mechanics 1",
+        iconUrl: "https://www.oia.hokudai.ac.jp/isp/wp-content/uploads/2019/07/at.png",
+        resources: [{
+            name: "Wikipedia",
+            url: "https://en.wikipedia.org/wiki/Mechanics",
+            description: "Basic information on calculus and outline"
+        },
+        {
+            name: "Khan Academy",
+            url: "https://www.khanacademy.org/math/calculus-2",
+            description: "Khan Academy - learn a bit on here"
+        }],
+        prerequisites: ["1"],
+        unlocks: [],
+        id: "3"
 
 
     }
