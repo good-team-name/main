@@ -147,10 +147,10 @@ db["1"].postSkills.push(smallify(db["3"]));
 
 db["3"].preSkills.push(smallify(db["1"]));
 
-db["4"].postSkills.push(smallify(db["3"]));
+db["3"].postSkills.push(smallify(db["4"]));
 
-db["3"].preSkills.push(smallify(db["4"]));
+db["4"].preSkills.push(smallify(db["3"]));
 
 db["4"].postSkills.push(smallify(db["5"]));
-db["5"].postSkills.push(smallify(db["4"]));
+db["5"].preSkills.push(smallify(db["4"]));
 
