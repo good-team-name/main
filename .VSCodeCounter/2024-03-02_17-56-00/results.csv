@@ -1,0 +1,29 @@
+"filename", "language", "TypeScript", "vue", "JSON with Comments", "JSON", "SCSS", "XML", "Markdown", "HTML", "comment", "blank", "total"
+"/Users/joshuamoses/skill-tree/main/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 12, 0, 0, 8, 20
+"/Users/joshuamoses/skill-tree/main/index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 13, 0, 1, 14
+"/Users/joshuamoses/skill-tree/main/package.json", "JSON", 0, 0, 0, 26, 0, 0, 0, 0, 0, 1, 27
+"/Users/joshuamoses/skill-tree/main/public/vite.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"/Users/joshuamoses/skill-tree/main/src/API.ts", "TypeScript", 55, 0, 0, 0, 0, 0, 0, 0, 2, 23, 80
+"/Users/joshuamoses/skill-tree/main/src/App.vue", "vue", 0, 45, 0, 0, 0, 0, 0, 0, 0, 19, 64
+"/Users/joshuamoses/skill-tree/main/src/components/ResourceLink.vue", "vue", 0, 30, 0, 0, 0, 0, 0, 0, 0, 13, 43
+"/Users/joshuamoses/skill-tree/main/src/components/SmallSkill.vue", "vue", 0, 40, 0, 0, 0, 0, 0, 0, 1, 15, 56
+"/Users/joshuamoses/skill-tree/main/src/main.ts", "TypeScript", 10, 0, 0, 0, 0, 0, 0, 0, 0, 8, 18
+"/Users/joshuamoses/skill-tree/main/src/router/index.ts", "TypeScript", 38, 0, 0, 0, 0, 0, 0, 0, 0, 4, 42
+"/Users/joshuamoses/skill-tree/main/src/skills.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/joshuamoses/skill-tree/main/src/skills/SkillContent.vue", "vue", 0, 38, 0, 0, 0, 0, 0, 0, 0, 17, 55
+"/Users/joshuamoses/skill-tree/main/src/skills/SkillFinder.vue", "vue", 0, 118, 0, 0, 0, 0, 0, 0, 0, 77, 195
+"/Users/joshuamoses/skill-tree/main/src/stores/User.ts", "TypeScript", 5, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9
+"/Users/joshuamoses/skill-tree/main/src/style.scss", "SCSS", 0, 0, 0, 0, 29, 0, 0, 0, 0, 7, 36
+"/Users/joshuamoses/skill-tree/main/src/styles/_variables.scss", "SCSS", 0, 0, 0, 0, 7, 0, 0, 0, 1, 2, 10
+"/Users/joshuamoses/skill-tree/main/src/tempDb.ts", "TypeScript", 134, 0, 0, 0, 0, 0, 0, 0, 0, 28, 162
+"/Users/joshuamoses/skill-tree/main/src/types.ts", "TypeScript", 32, 0, 0, 0, 0, 0, 0, 0, 5, 15, 52
+"/Users/joshuamoses/skill-tree/main/src/views/HomeView.vue", "vue", 0, 5, 0, 0, 0, 0, 0, 0, 0, 4, 9
+"/Users/joshuamoses/skill-tree/main/src/views/SkillCreateView.vue", "vue", 0, 6, 0, 0, 0, 0, 0, 0, 0, 5, 11
+"/Users/joshuamoses/skill-tree/main/src/views/SkillEditView.vue", "vue", 0, 6, 0, 0, 0, 0, 0, 0, 0, 5, 11
+"/Users/joshuamoses/skill-tree/main/src/views/SkillView.vue", "vue", 0, 40, 0, 0, 0, 0, 0, 0, 0, 18, 58
+"/Users/joshuamoses/skill-tree/main/src/views/UserView.vue", "vue", 0, 28, 0, 0, 0, 0, 0, 0, 0, 14, 42
+"/Users/joshuamoses/skill-tree/main/src/vite-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"/Users/joshuamoses/skill-tree/main/tsconfig.json", "JSON with Comments", 0, 0, 21, 0, 0, 0, 0, 0, 2, 3, 26
+"/Users/joshuamoses/skill-tree/main/tsconfig.node.json", "JSON", 0, 0, 0, 11, 0, 0, 0, 0, 0, 1, 12
+"/Users/joshuamoses/skill-tree/main/vite.config.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 0, 0, 1, 2, 15
+"Total", "-", 286, 356, 21, 37, 36, 1, 12, 13, 13, 296, 1071

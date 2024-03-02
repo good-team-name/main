@@ -1,0 +1,68 @@
+Date : 2024-03-02 17:56:00
+Directory : /Users/joshuamoses/skill-tree/main
+Total : 27 files,  762 codes, 13 comments, 296 blanks, all 1071 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| vue                |         10 |        356 |          1 |        187 |        544 |
+| TypeScript         |          9 |        286 |          9 |         86 |        381 |
+| JSON               |          2 |         37 |          0 |          2 |         39 |
+| SCSS               |          2 |         36 |          1 |          9 |         46 |
+| JSON with Comments |          1 |         21 |          2 |          3 |         26 |
+| HTML               |          1 |         13 |          0 |          1 |         14 |
+| Markdown           |          1 |         12 |          0 |          8 |         20 |
+| XML                |          1 |          1 |          0 |          0 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                  |         27 |        762 |         13 |        296 |      1,071 |
+| . (Files)                                                          |          6 |         95 |          3 |         16 |        114 |
+| public                                                             |          1 |          1 |          0 |          0 |          1 |
+| src                                                                |         20 |        666 |         10 |        280 |        956 |
+| src (Files)                                                        |          8 |        305 |          8 |        102 |        415 |
+| src/components                                                     |          2 |         70 |          1 |         28 |         99 |
+| src/router                                                         |          1 |         38 |          0 |          4 |         42 |
+| src/skills                                                         |          2 |        156 |          0 |         94 |        250 |
+| src/stores                                                         |          1 |          5 |          0 |          4 |          9 |
+| src/styles                                                         |          1 |          7 |          1 |          2 |         10 |
+| src/views                                                          |          5 |         85 |          0 |         46 |        131 |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                           | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/joshuamoses/skill-tree/main/README.md                       | Markdown           |         12 |          0 |          8 |         20 |
+| /Users/joshuamoses/skill-tree/main/index.html                      | HTML               |         13 |          0 |          1 |         14 |
+| /Users/joshuamoses/skill-tree/main/package.json                    | JSON               |         26 |          0 |          1 |         27 |
+| /Users/joshuamoses/skill-tree/main/public/vite.svg                 | XML                |          1 |          0 |          0 |          1 |
+| /Users/joshuamoses/skill-tree/main/src/API.ts                      | TypeScript         |         55 |          2 |         23 |         80 |
+| /Users/joshuamoses/skill-tree/main/src/App.vue                     | vue                |         45 |          0 |         19 |         64 |
+| /Users/joshuamoses/skill-tree/main/src/components/ResourceLink.vue | vue                |         30 |          0 |         13 |         43 |
+| /Users/joshuamoses/skill-tree/main/src/components/SmallSkill.vue   | vue                |         40 |          1 |         15 |         56 |
+| /Users/joshuamoses/skill-tree/main/src/main.ts                     | TypeScript         |         10 |          0 |          8 |         18 |
+| /Users/joshuamoses/skill-tree/main/src/router/index.ts             | TypeScript         |         38 |          0 |          4 |         42 |
+| /Users/joshuamoses/skill-tree/main/src/skills.ts                   | TypeScript         |          0 |          0 |          1 |          1 |
+| /Users/joshuamoses/skill-tree/main/src/skills/SkillContent.vue     | vue                |         38 |          0 |         17 |         55 |
+| /Users/joshuamoses/skill-tree/main/src/skills/SkillFinder.vue      | vue                |        118 |          0 |         77 |        195 |
+| /Users/joshuamoses/skill-tree/main/src/stores/User.ts              | TypeScript         |          5 |          0 |          4 |          9 |
+| /Users/joshuamoses/skill-tree/main/src/style.scss                  | SCSS               |         29 |          0 |          7 |         36 |
+| /Users/joshuamoses/skill-tree/main/src/styles/_variables.scss      | SCSS               |          7 |          1 |          2 |         10 |
+| /Users/joshuamoses/skill-tree/main/src/tempDb.ts                   | TypeScript         |        134 |          0 |         28 |        162 |
+| /Users/joshuamoses/skill-tree/main/src/types.ts                    | TypeScript         |         32 |          5 |         15 |         52 |
+| /Users/joshuamoses/skill-tree/main/src/views/HomeView.vue          | vue                |          5 |          0 |          4 |          9 |
+| /Users/joshuamoses/skill-tree/main/src/views/SkillCreateView.vue   | vue                |          6 |          0 |          5 |         11 |
+| /Users/joshuamoses/skill-tree/main/src/views/SkillEditView.vue     | vue                |          6 |          0 |          5 |         11 |
+| /Users/joshuamoses/skill-tree/main/src/views/SkillView.vue         | vue                |         40 |          0 |         18 |         58 |
+| /Users/joshuamoses/skill-tree/main/src/views/UserView.vue          | vue                |         28 |          0 |         14 |         42 |
+| /Users/joshuamoses/skill-tree/main/src/vite-env.d.ts               | TypeScript         |          0 |          1 |          1 |          2 |
+| /Users/joshuamoses/skill-tree/main/tsconfig.json                   | JSON with Comments |         21 |          2 |          3 |         26 |
+| /Users/joshuamoses/skill-tree/main/tsconfig.node.json              | JSON               |         11 |          0 |          1 |         12 |
+| /Users/joshuamoses/skill-tree/main/vite.config.ts                  | TypeScript         |         12 |          1 |          2 |         15 |
+| Total                                                              |                    |        762 |         13 |        296 |      1,071 |
++--------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

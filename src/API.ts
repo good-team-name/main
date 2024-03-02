@@ -1,78 +1,130 @@
-// User
-
 import { users, db } from "./tempDb";
 import { Resource, SkillBig, SkillSmall, UserBig } from "./types";
 import { v4 as uuidv4 } from 'uuid';
+import axios from "axios";
+
+const url = "http://localhost:8080"
 
 
-const loggedInID = "abc";
+const uid = "abc";
+const idToken = "";
+
+
+export const api = axios.create({
+    baseURL: url,
+
+
+})
+
 export namespace User {
-    export const get = (id: string): UserBig => {
-        return users[id]
+    export const get = async (id: string): Promise<UserBig> => {
+        let res = await api.get(`/user/get/${id}`);
+        return res.data.data.doc;
     }
 
 }
 
 export namespace Skill {
-    export const get = (id: string): SkillBig => {
-        return db[id];
+    export const get = async (id: string): Promise<SkillBig> => {
+        let res = await api.get(`/skill/get/${id}`);
+        return res.data.data.doc;;
     }
 
-    export const getPre = (id: string): Array<SkillSmall> => {
-        return db[id].preSkills;
-    }
 
-    export const getPost = (id: string): Array<SkillSmall> => {
-        return db[id].postSkills;
-    }
+    /* POST: /skill/update
+
+    id: string;
+    idToken: string;
+
+    queryId: string;
+
+    resources: Array<Frontend.Resource>;
+    name: string;
+    iconImage: string;
+    description: string;
+
+    preSkills: Array<string>;
+    postSkills: Array<string>;
+
+    editorsAdded: Array<string>;
+    editorsRemoved: Array<string>;
+    
+    */
+
 
     export const update = (
-        id: string,
+
+        queryId: string,
+
         resources: Array<Resource>,
         name: string,
-        iconUrl: string,
-        preSkills: Array<SkillSmall>,
-        postSkills: Array<SkillSmall>,
-        editorsAdded: string,
+        iconImage: string,
+        description: string,
+
+        preSkills: Array<string>,
+        postSkills: Array<string>,
+
+        editorsAdded: Array<string>,
+        editorsRemoved: Array<string>
 
     ) => {
-        const skill = db[id];
-        skill.resources = resources;
-        skill.name = name;
-        skill.iconUrl = iconUrl;
-        skill.preSkills = preSkills;
-        skill.postSkills = postSkills;
+        api.post('/skill/update', {
+            id: uid,
+            idToken,
+
+            queryId,
+
+            resources,
+            name,
+            iconImage,
+            description,
+
+            preSkills,
+            postSkills,
+
+            editorsAdded,
+            editorsRemoved
+        })
+
+
+
+
+
     }
 
+    /* POST: /skill/create
 
-    export const create = (
-        resources: Array<Resource>,
+    id: string;
+    idToken: string;
+
+    name: string;
+    
+    */
+
+
+    export const create = async (
         name: string,
-        iconUrl: string,
 
     ) => {
-        // ad 
-        const id = uuidv4();
-
-        const s : SkillBig = {
-            id,
+        const res = await api.post('/skill/create', {
             name,
-            resources,
-            iconUrl,
-            preSkills: [],
-            postSkills: [],
+            id: uid,
+            idToken: idToken
+        })
+        console.log(res.data)
 
-            description: "",
-            owner: User.get(loggedInID),
-            lastEdited: User.get(loggedInID),
-            
+        const data : {
+            status: string,
+            message: string,
+            data: {
+                id: string
+            }
+
+        } = res.data;
+
+        return data.data.id;
 
 
-
-            
-        };
-
-        db[id] = s;
     }
 
 

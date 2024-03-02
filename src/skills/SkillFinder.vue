@@ -26,7 +26,7 @@ const router = useRouter();
             <div></div>
             <div class="upNext">
 
-                <div class="containerNext" v-for="postReq in Skill.getPre(skill.id)">
+                <div class="containerNext" v-for="postReq in skill.preSkills">
                     
                     <SmallSkill class="skillLink" @click="router.push(`/skill/${postReq.id}`)" :skill="postReq">
                     </SmallSkill>
@@ -55,7 +55,7 @@ const router = useRouter();
             <div ></div>
             <div class="upNext">
 
-                <div class="containerNext" v-for="postReq in Skill.getPost(skill.id)">
+                <div class="containerNext" v-for="postReq in skill.postSkills">
                     <div class="middleLineSmall"></div>
                     <SmallSkill class="skillLink" @click="router.push(`/skill/${postReq.id}`)" :skill="postReq">
                     </SmallSkill>

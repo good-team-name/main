@@ -1,38 +1,39 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { Skill } from '../API'
+import { ref } from 'vue';
 
 const router = useRouter();
 
-let name = '';
+const name = ref('');
 
-const submitHandler = () => {
-    Skill.create(name)
-    router.push('/skill/edit')
-    
+const createSkill = async () => {
+    if (name.value.length > 0) {
+        const id = await Skill.create(name.value);
+        router.push(`/skill/edit/${id}`);
+
+    }
+
+
 }
 
 </script>
 
 <template>
-<div class="createViewMain">
-    <p class="formTitle">CREATE A SKILL:</p>
-    <form @submit="submitHandler">
-        <input type="text" placeholder=">  Enter skill name... " v-model="name"></input>
-    </form>
-</div>
+    <div class="createViewMain">
+        <p class="formTitle">CREATE A SKILL:</p>
+        <input @submit="createSkill()" type="text" placeholder="Enter skill name... " v-model="name"></input>
+        <div class="createButton" @click="createSkill()">Create!</div>
+    </div>
 </template>
 
 <style scoped lang="scss">
-@font-face{
-  font-family: "Press Start";
-  src: url("../assets/fonts/PressStart2P-Regular.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 
 .formTitle {
     font-size: 2.5rem;
     font-weight: bold;
-    font-family: 'Press Start';
     color: #FFE86D;
     letter-spacing: 0;
     -webkit-text-stroke-width: 0.07em;
@@ -40,6 +41,8 @@ const submitHandler = () => {
 }
 
 .createViewMain {
+    font-family: "Press Start 2P", system-ui;
+
     width: 100%;
     height: 100%;
     display: flex;
@@ -48,7 +51,7 @@ const submitHandler = () => {
     gap: 30px;
     align-items: center;
     justify-content: center;
-    background-color: gray;
+    background-color: $bg;
 }
 
 input {
@@ -58,4 +61,15 @@ input {
     border: 5px solid black;
 }
 
+.createButton {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
 </style>
