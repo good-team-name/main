@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { Skill } from "../API"
-import SkillViewFinder from "../skills/SkillFinder.vue"
+import {User} from "../API"
 
 
 const route = useRoute();
@@ -18,8 +17,8 @@ const currRoute = computed(() => {
     return route.params.id as string;
 })
 
-const skill = computed(() => {
-    return Skill.get(currRoute.value);
+const user = computed(() => {
+    return User.get(currRoute.value);
 })
 
 
@@ -34,20 +33,10 @@ watch(selectedID, (id) => {
 </script>
 
 <template>
-    <div class="skillViewMain">
-        <SkillViewFinder :skill="skill"></SkillViewFinder>
-    </div>
+    {{ user }}
+    
 </template>
 
 <style scoped lang="scss">
-.skillViewMain {
-    width: 100%;
-    height: 100%;
 
-    display: grid;
-    grid-template-rows: 40% 60%;
-
-
-
-}
 </style>

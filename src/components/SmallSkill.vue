@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Skill } from '../types';
+import { SkillSmall } from '../types';
 
 defineProps<{
-    skill: Skill
+    skill: SkillSmall
 
 }>()
 
@@ -27,11 +27,11 @@ const emit = defineEmits<{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 1.2cqw;
 
     user-select: none;
     h1 {
-        font-size: 1em;
+        font-size: 1cqw;
         text-decoration: underline;
 
         &:hover {
@@ -40,8 +40,8 @@ const emit = defineEmits<{
     }
 
     .image {
-        width: 7em;
-        height: 7em;
+        width: 5cqw;
+        height: 5cqw;
 
         background-size: cover;
 
