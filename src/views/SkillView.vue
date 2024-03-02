@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { Skill } from "../API"
 import SkillViewFinder from "../skills/SkillFinder.vue"
+import SkillContent from '../skills/SkillContent.vue';
 
 
 const route = useRoute();
@@ -36,6 +37,7 @@ watch(selectedID, (id) => {
 <template>
     <div class="skillViewMain">
         <SkillViewFinder :skill="skill"></SkillViewFinder>
+        <SkillContent :skill="skill"></SkillContent>
     </div>
 </template>
 
@@ -46,6 +48,9 @@ watch(selectedID, (id) => {
 
     display: grid;
     grid-template-rows: 40% 60%;
+
+    border-radius: 10px;
+
 
 
 
