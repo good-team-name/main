@@ -13,6 +13,7 @@ const emit = defineEmits<{
 
 <template>
     <div>
+        {{resource.url}}
         
     </div>
 

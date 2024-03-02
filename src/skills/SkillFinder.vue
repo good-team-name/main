@@ -23,16 +23,14 @@ const router = useRouter();
         <div class="left-side">
 
 
-            <div class="resources" v-if="Skill.getPre(skill.id).length > 0" >
-                <h2>Prereqs</h2>
-            </div>
-            <div v-else></div>
+            <div></div>
             <div class="upNext">
 
                 <div class="containerNext" v-for="postReq in Skill.getPre(skill.id)">
-                    <div class="middleLineSmall"></div>
+                    
                     <SmallSkill class="skillLink" @click="router.push(`/skill/${postReq.id}`)" :skill="postReq">
                     </SmallSkill>
+                    <div class="middleLineSmall"></div>
 
 
                 </div>
@@ -54,17 +52,14 @@ const router = useRouter();
 
         <div class="right-side">
 
-            <div v-if="Skill.getPost(skill.id).length > 0" class="resources">
-                <h2>Level Up!</h2>
-
-            </div>
-            <div v-else></div>
+            <div ></div>
             <div class="upNext">
 
                 <div class="containerNext" v-for="postReq in Skill.getPost(skill.id)">
                     <div class="middleLineSmall"></div>
                     <SmallSkill class="skillLink" @click="router.push(`/skill/${postReq.id}`)" :skill="postReq">
                     </SmallSkill>
+                 
 
 
                 </div>
@@ -92,117 +87,59 @@ const router = useRouter();
     grid-template-columns: 1fr 1fr 1fr;
 
 }
-.resources {
-    // background-color: $sc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+.middleLineSmall {
+    width:200px;
+
+    border: 1px dashed white;
+    
 }
 
 .left-side,
 .right-side {
-    // background-color: red;
+
     width: 37vw;
-
-}
-
-
-.left-side {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 25% 50% 25%;
 
     .upNext {
         display: flex;
+
         flex-direction: column;
-        align-items: center;
         justify-content: space-evenly;
-        // background-color: red;
-
-
-        border-right: 3px solid white;
-        // background-color: $sc;
 
         .containerNext {
-            // transform: translateY(-50%);
             display: flex;
-            justify-content: center;
+            flex-direction: row;
             align-items: center;
-            position: relative;
-            
-
-            .middleLineSmall {
-                // background-color: white;
-                z-index: -1;
-                right: -200px;
-                position: absolute;
-                width: 300px;
-                height: 0px;
-                border-top: 3px dotted white;
-            }
-
-            background-color: white;
-            color: black;
-            border-radius: 10px;
-
-
-
-
+            justify-content: center;
         }
     }
+}
+
+.left-side > .upNext {
+    border-right: 3px solid white;
+    align-items: flex-end;
 
 
 }
+
+
+.right-side > .upNext {
+    border-left: 3px solid white;
+    align-items: flex-start;
+
+
+}
+
 
 
 .skillLink {
-    width: 80px;
-}
-.right-side {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 25% 50% 25%;
-
-    .upNext {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        // background-color: red;
-
-
-        border-left: 3px solid white;
-        // background-color: $sc;
-
-        .containerNext {
-            // transform: translateY(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-
-            .middleLineSmall {
-                // background-color: white;
-                z-index: -1;
-                left: -200px;
-                position: absolute;
-                width: 300px;
-                height: 0px;
-                border-top: 3px dotted white;
-            }
-
-            background-color: white;
-            color: black;
-            border-radius: 10px;
-
-
-
-
-        }
-    }
-
-
+    // width: 100px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
 }
 
 

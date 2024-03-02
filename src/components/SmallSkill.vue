@@ -2,7 +2,7 @@
 import { SkillSmall } from '../types';
 
 defineProps<{
-    skill: SkillSmall
+    skill: SkillSmall,
 
 }>()
 
@@ -14,7 +14,7 @@ const emit = defineEmits<{
 
 <template>
     <div class="skillMain">
-        <div @click="emit('click')" class="image" :style="`background-image: url(${skill.iconUrl});`"></div>
+        <!-- <div @click="emit('click')" class="image" :style="`background-image: url(${skill.iconUrl});`"></div> -->
             <h1 @click="emit('click')">{{ skill.name }}</h1>
     </div>
 
@@ -27,17 +27,17 @@ const emit = defineEmits<{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1.2cqw;
 
     user-select: none;
     h1 {
-        font-size: 1cqw;
+        font-size: 0.8em;
         text-decoration: underline;
 
         &:hover {
             cursor: pointer;
         }
     }
+    padding: 4px;
 
     .image {
         width: 5cqw;
