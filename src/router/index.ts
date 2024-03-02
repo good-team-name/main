@@ -27,7 +27,7 @@ const routes = [
         component: SkillCreateView,
     },
     {
-        path: '/skill/edit',
+        path: '/skill/edit/:id',
         name: 'skillEdit',
         component: SkillEditView,
     },

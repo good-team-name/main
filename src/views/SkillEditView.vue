@@ -1,93 +1,121 @@
 <script setup lang="ts">
-import { Skill } from '../API'
-import { ref } from 'vue'
+import { Ref, computed, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { Skill } from "../API"
 
-const currID = '1'
-const currSkill = Skill.get(currID)
-let prereqs = ref(currSkill.preSkills)
-let unlocks = ref(currSkill.postSkills)
+import { SkillBig, SkillSmall } from '../types';
+import { onMounted } from 'vue';
 
-const value = currSkill.description
 
-const newPrereqSkill = ''
-const newUnlockSkill = ''
+const route = useRoute();
+const router = useRouter();
 
-const removeUnlock = (name: string) => {
-    unlocks.value = unlocks.value.filter((unlock) => unlock.name !== name)
+const idFromUrl: string = route.params.id as string;
+const selectedID = ref("");
+
+selectedID.value = idFromUrl;
+
+const skill: Ref<SkillBig | null> = ref(null);
+
+const currRoute = computed(() => {
+    return route.params.id as string;
+})
+
+// skill.value = await Skill.get(currRoute.value);
+onMounted(async () => {
+
+    Skill.get(currRoute.value).then((sk) => {
+        skill.value = sk;
+    })
+
+})
+
+
+watch(selectedID, async (id) => {
+
+    router.push({
+        params: {
+            id
+        }
+    })
+
+    skill.value = await Skill.get(selectedID.value);
+
+})
+
+const removeSkill = (skillArray: Array<SkillSmall>, id: string) => {
+    skillArray = skillArray.filter((skill) => skill.id != id);
 }
 
-const removePrereq = (name: string) => {
-    prereqs.value = prereqs.value.filter((prereq) => prereq.name !== name)
+const addSkill = (skillArray: Array<SkillSmall>, newSkill: SkillSmall) => {
+    skillArray = [...skillArray, newSkill];
 }
 
-const submitPrereq = (id: string) => {
-    prereqs.value.push(Skill.get(id))
+const updateSkill = () => {
+    // Skill.update()
+
 }
 
-const submitUnlock = (id: string) => {
-    unlocks.value.push(Skill.get(id))
-}
 
 </script>
 
 <template>
-<div class="editViewMain">
-    <div class="leftSide">
-        <div class="leftTop">
-            <div class="iconPic"></div>
-            <div class="mainInfo">
-                <p class="subtitle mainInfoTitle">Name: {{ currSkill.name }}</p>
-                <p class="subtitle description">Description: </p>
-                <textarea id="descInput" cols="50" rows="10" :value></textarea>
+    <div class="editViewMain" v-if="skill">
+        <div class="leftSide">
+            <div class="leftTop">
+                <div class="iconPic"></div>
+                <div class="mainInfo">
+                    <p class="subtitle mainInfoTitle">Name: {{ skill.name }}</p>
+                    <p class="subtitle description">Description: </p>
+                    <textarea id="descInput" cols="50" rows="10" v-model="skill.description"></textarea>
+                </div>
+            </div>
+
+            <div class="leftBottom">
+                <div class="prereqsContainer">
+                    <p class="subtitle prereqsTitle">Prerequisites</p>
+                    <ul>
+                        <li v-for="preSkill in skill.preSkills" class="skillListEntry">
+                            {{ preSkill.name }}
+                            <span class="removeSkillButton" @click="removeSkill(skill.preSkills, preSkill.id)">X</span>
+                        </li>
+                    </ul>
+                    <!-- <form @submit.prevent="addSkill(skill.preSkills, newPrereqSkill)">
+                        <input class="addSkillForm" type="text" placeholder="Add a skill!"
+                            v-model="newPrereqSkill"></input>
+                    </form> -->
+                </div>
+
+                <div class="unlocksContainer">
+                    <p class="subtitle unlocksTitle">Unlocks</p>
+                    <ul>
+                        <li v-for="postSkill in skill.postSkills" class="skillListEntry">
+                            {{ postSkill.name }}
+                            <span class="removeSkillButton" @click="removeSkill(skill.postSkills, postSkill.id)">X</span>
+                        </li>
+                    </ul>
+                    <!-- <form @submit.prevent="addSkill(skill.postSkills, newUnlockSkill)">
+                        <input class="addSkillForm" type="text" placeholder="Add a skill!"
+                            v-model="newUnlockSkill"></input>
+                    </form> -->
+                </div>
             </div>
         </div>
 
-        <div class="leftBottom">
-            <div class="prereqsContainer">
-                <p class="subtitle prereqsTitle">Prerequisites</p>
-                <ul>
-                    <li v-for="prereq in prereqs" class="skillListEntry">
-                        {{ prereq.name }}
-                        <span class="removeSkillButton" @click="removePrereq(prereq.name)">X</span>
-                    </li>
-                </ul>
-                <form @submit.prevent="submitPrereq(newPrereqSkill)">
-                    <input class="addSkillForm" type="text" placeholder="Add a skill!" v-model="newPrereqSkill"></input>
-                </form>
-            </div>
-
-            <div class="unlocksContainer">
-                <p class="subtitle unlocksTitle">Unlocks</p>
-                <ul>
-                    <li v-for="unlock in unlocks" class="skillListEntry">
-                        {{ unlock.name }}
-                        <span class="removeSkillButton" @click="removeUnlock(unlock.name)">X</span>
-                    </li>
-                </ul>
-                <form @submit.prevent="submitUnlock(newUnlockSkill)">
-                    <input class="addSkillForm" type="text" placeholder="Add a skill!" v-model="newUnlockSkill"></input>
-                </form>
-            </div>
+        <div class="resources">
+            <p class="subtitle resourcesTitle"></p>
         </div>
-    </div>
 
-    <div class="resources">
-        <p class="subtitle resourcesTitle"></p>>
+        <div class="createButton" @click="updateSkill">Create!</div>
     </div>
-</div>
 </template>
 
 <style scoped lang="scss">
-@font-face{
-  font-family: "Press Start";
-  src: url("../assets/fonts/PressStart2P-Regular.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-* {
-    font-family: 'Press Start';
-}
 
 .editViewMain {
+    font-family: "Press Start 2P", system-ui;
     color: gray;
     padding: 4em;
     height: 100%;
@@ -186,4 +214,19 @@ ul {
     list-style: none;
 }
 
+.createButton {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+}
 </style>
