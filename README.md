@@ -3,7 +3,7 @@
 [Overview](#overview)     
 [API](#api)  
 [Skills](#skills) 
-
+[User](#user) 
 
 
 <a name="overview"/>
@@ -152,4 +152,18 @@ This page contains functionality to edit the skill- make changes to the informat
 /skill/create
 ```
 This page contains functionality to create a new skill, generating a new ID and name, after which the user will be redirected to skill-edit.
+
+
+<a name="user"/>
+
+# User
+A user signs in by Google/Github. They can update skills, as well as create new ones which can be chained
+
+## Related Views
+
+## User Page
+```
+/user/:id
+```
+This page contains basic user information, such as username, ID and contribution amounts.
 
