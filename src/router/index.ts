@@ -7,6 +7,7 @@ import SkillEditView from "../views/SkillEditView.vue";
 import LandingView from "../views/LandingView.vue";
 import LoginView from "../views/LoginView.vue";
 import SignupView from "../views/SignupView.vue"
+import PathViewPrototype from "../views/PathViewPrototype.vue";
 
 const routes = [
     {
@@ -51,6 +52,11 @@ const routes = [
         name: 'signup',
         component: SignupView,
     },
+    {
+        path: '/pathtest',
+        name: 'pathtest',
+        component: PathViewPrototype,
+    }
     
 ];
 const router = createRouter({
