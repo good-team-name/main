@@ -130,5 +130,26 @@ getSmallSkill - fetches a SmallSkill from backend
 <a name="skills"/>
 
 # Skills
+Skills are a linked list of different skill nodes intended to help the user develop skills, containing useful resources. 
+We intend for the user to be able to know where they're headed -> what skills they need to develop to be prepared for something.
 
+## Related Views
+
+### Skill Page
+```
+/skill/:id 
+```
+This page contains the skill, with relevant information such as the links (body) and adjacent skills.
+
+### Skill Edit
+```
+/skill/edit/:id
+```
+This page contains functionality to edit the skill- make changes to the information, description and image icon of the skill.
+
+### Skill Create
+```
+/skill/create
+```
+This page contains functionality to create a new skill, generating a new ID and name, after which the user will be redirected to skill-edit.
 
