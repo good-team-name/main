@@ -14,6 +14,7 @@ this is done in order to appropriately represent what our program is like, as it
 
 Our program is a webapp constructed using the framework Vue.js, with Typescript and HTML/CSS.
 
+All pages can be found in /views.
 
 <a name="api"/>
 
