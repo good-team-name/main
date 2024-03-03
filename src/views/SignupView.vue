@@ -49,8 +49,6 @@ const createUser = async () => {
 </template>
 
 <style scoped lang="scss">
-.signupView {
-
 * {
     font-family: "Press Start 2P", system-ui;
 }
@@ -113,3 +111,6 @@ const createUser = async () => {
     }
 }
 </style>
+
+
+
