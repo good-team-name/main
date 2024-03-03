@@ -18,9 +18,21 @@ onMounted(() => {
 <template>
   <div class="topbar">
     <div @click="router.push('/')" class="logo-image"></div>
-    <div @click="router.push(`/user/${userStore.user_data.id}`)" :style="`background-image: url(${userStore.user_data.iconUrl})`" class="userTopbar"
+
+    <div class="nav">
+      <div class="navLink" @click="router.push('/')">Home</div>
+      <div class="navLink" @click="router.push('/skill')">Skills</div>
+      <div class="navLink" @click="router.push('/path')">Paths</div>
+
+    </div>
+
+
+    <div @click="router.push(`/user/${userStore.user_data.id}`)"
+      :style="`background-image: url(${userStore.user_data.iconUrl})`" class="userTopbar"
       v-if="userStore.user_data && userStore.loggedIn">
     </div>
+
+
 
   </div>
   <div class="main-content">
@@ -45,7 +57,7 @@ onMounted(() => {
     cursor: pointer;
   }
 
-  
+
 }
 
 .topbar {
@@ -96,5 +108,11 @@ onMounted(() => {
 
 .main-content {
   height: 86vh;
+}
+
+.nav {
+  font-family: "Press Start 2P", system-ui;;
+  display: flex;
+  flex-direction: column;
 }
 </style>

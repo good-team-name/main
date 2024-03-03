@@ -56,7 +56,7 @@ watch(selectedID, (id) => {
 
 })
 
-watch(currRoute, (id) => {
+watch(currRoute, () => {
     getUser()
 
 })

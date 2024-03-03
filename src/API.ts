@@ -3,8 +3,8 @@ import axios from "axios";
 
 import { useUserStore } from "./stores/User";
 
-const url = "http://localhost:8080";
-// const url = "https://skill-tree-05856bfa2481.herokuapp.com"
+// const url = "http://localhost:8080";
+const url = "https://skill-tree-05856bfa2481.herokuapp.com"
 
 
 // const uid = "abc";
