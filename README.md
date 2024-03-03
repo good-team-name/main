@@ -2,6 +2,9 @@
 ##### Table of Contents   
 [Overview](#overview)     
 [API](#api) 
+[Skills](#skills) 
+
+
 
 <a name="overview"/>
 
@@ -121,6 +124,8 @@ user: *
 getBigSkill - fetches a BigSkill from backend
 getSmallSkill - fetches a SmallSkill from backend
 
+<a name="skills"/>
 
+# Skills
 
 
