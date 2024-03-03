@@ -30,14 +30,20 @@ const createUser = () => {
 
 <style scoped lang="scss">
 
-.signupView {
+* {
     font-family: "Press Start 2P", system-ui;
+}
+
+.signupView {
     width:100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../assets/bg_crystal.png');
+    background-image: url('../assets/waterBG.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
 
 
 }
@@ -45,7 +51,8 @@ const createUser = () => {
 .hero {
     width: 40%;
     height: 50%;
-    background-color: $sc;
+    background-color: #2B2038;
+    outline: 5px solid #FFCAEA;
     border-radius: 10px;
     padding: 20px;
 
@@ -56,10 +63,13 @@ const createUser = () => {
     
     h1 {
         text-align: center;
+        font-size: 2.5rem;
     }
     input {
-        
-        font-size: 40px;
+        color: white;
+        background-color: #5E3D63;
+        padding: 10px;
+        font-size: 1.8rem;
         text-align: center;
 
     }
