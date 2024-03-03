@@ -31,25 +31,33 @@ const clickHandler = () => {
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 
-.loginMain {
+* {
     font-family: "Press Start 2P", system-ui;
+}
 
-    background-image: url('../assets/bg_crystal.png');
+.loginMain {
+
+    background-image: url('../assets/waterBG.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: row;
 }
 
 .mainContainer {
-    background-size: cover;
     padding: 100px;
     padding-right: 0;
     display: flex;
     flex-direction: column;
+
 }
 
 .title {
-    font-size: 3.5rem;
-    padding-bottom: 10px;
+    color: white;
+    text-align: left;
+    font-size: 4rem;
+    padding-bottom: 30px;
 }
 
 .desc {
@@ -84,7 +92,8 @@ button:hover {
     margin-left: 200px;
     margin-bottom: 100px;
     background-image: url("../assets/landingIcon.png");
-    background-size: contain;
-    object-fit: cover;
+    background-size: cover; /* or 'contain' based on your preference */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 </style>
