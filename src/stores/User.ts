@@ -69,6 +69,7 @@ export const useUserStore = defineStore("user", () => {
     const logout = () => {
         const auth = getAuth();
         signOut(auth);
+        router.push('/')
         resetFields();
 
     }

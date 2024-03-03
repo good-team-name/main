@@ -11,7 +11,11 @@ const { uid, idToken, google_user } = storeToRefs(userStore);
 const usernameRaw = ref("");
 
 const createUser = () => {
-    console.log(google_user.value?.photoURL)
+    if (google_user.value) {
+
+    } else {
+        userStore.logout()
+    }
 
 }
 </script>
