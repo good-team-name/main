@@ -6,19 +6,15 @@ const userStore = useUserStore();
 
 <template>
 <div class="loginMain">
-    <h1 class="title">Login!</h1>
-    <div class="loginOptionsContainer">
-        <div @click="userStore.login()" class="loginOption">
-            LOGIN WITH GOOGLE
-            <img id="googleIcon" src="../assets/GOOGLE.png">
-        </div>
-        <div class="loginOption">
-            LOGIN WITH GITHUB
-            <img id="gitIcon" src="../assets/GITHUB.png">
-        </div>
-        <div class="loginOption">
-            LOGIN WITH WIKIPEDIA
-            <img id="wikiIcon" src="../assets/WIKI.png"> 
+    <div class="loginContainer">
+        <h1 class="title">LOGIN WITH:</h1>
+        <div class="loginOptionsContainer">
+            <div @click="userStore.login()" class="loginOption">
+                <img id="googleIcon" src="../assets/GOOGLE.png">
+            </div>
+            <div class="loginOption">
+                <img id="gitIcon" src="../assets/GITHUB.png">
+            </div>
         </div>
     </div>
 </div>
@@ -34,42 +30,59 @@ const userStore = useUserStore();
     display: flex;
     font-family: "Press Start 2P", system-ui;
 
-    flex-direction: column;
+    background-image: url('../assets/waterBG.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
     justify-content: center;
     align-items: center;
 }
 
 .title {
-    font-size: 3rem;
+    color: #EFB1FF;
+    padding-top: 80px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.loginContainer {
+    background-color: #2B2038;
+    outline: 6px solid #FFCAEA;
+    display: flex;
+    flex-direction: column;
 }
 
 .loginOptionsContainer {
     padding: 100px;
-    padding-top: 50px;
+    padding-top: 70px;
+    padding-bottom: 50px;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: row;
+    gap: 100px;
 }
 
 .loginOption {
-    font-size: 1.1rem;
-    padding: 1.4em;
-    padding-right: 200px;
-    color: #4B2A75;
+    transition: 0.5s;
+    padding: 30px;
     letter-spacing: 0;
-    background-color: #F596CF;
-    border: 6px solid #70287C;
+    background-color: #6C507E;
+
+
+    display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.loginOption:hover {
+    
     cursor: pointer;
-    position: relative;
+    background-color: #876A99;
 }
 
 img {
-    position: absolute;
-    top: 2px;
-    right: 10px;
-    width: 70px;
-    height: 70px;
+    width: 110px;
+    height: 110px;
 }
 
 
