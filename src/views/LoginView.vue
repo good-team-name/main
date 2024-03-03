@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { useUserStore } from '../stores/User';
 
+const userStore = useUserStore();
 </script>
 
 <template>
 <div class="loginMain">
     <h1 class="title">Login!</h1>
     <div class="loginOptionsContainer">
-        <div class="loginOption">
+        <div @click="userStore.login()" class="loginOption">
             LOGIN WITH GOOGLE
             <img id="googleIcon" src="../assets/GOOGLE.png">
         </div>
@@ -23,19 +25,15 @@
 </template>
 
 <style>
-@font-face{
-  font-family: "Press Start";
-  src: url("../assets/fonts/PressStart2P-Regular.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-* {
-    font-family: "Press Start";
-}
 
 .loginMain {
     width: 100%;
     height: 100%;
     display: flex;
+    font-family: "Press Start 2P", system-ui;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;

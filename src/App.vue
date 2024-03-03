@@ -1,10 +1,26 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { useUserStore } from './stores/User';
+import { onMounted } from 'vue';
+
+const router = useRouter();
+const userStore = useUserStore();
+
+onMounted(() => {
+  userStore.init();
+})
+
+
+
 
 </script>
 
 <template>
   <div class="topbar">
-    <div class="logo-image"></div>
+    <div @click="router.push('/')" class="logo-image"></div>
+    <div class="userTopbar" v-if="userStore.loggedIn">
+      
+    </div>
 
   </div>
   <div class="main-content">
@@ -13,6 +29,16 @@
 </template>
 
 <style scoped lang="scss">
+.userTopbar {
+  background-color: white;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
 .topbar {
   // background-color: $sc;
   background: url('./assets/topbar.png');
@@ -23,7 +49,7 @@
   display: flex;
 
 
-.logo-image {
+  .logo-image {
     cursor: pointer;
     box-sizing: content-box;
     margin: 4px;

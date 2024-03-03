@@ -1,14 +1,28 @@
-import { users, db } from "./tempDb";
-import { Resource, SkillBig, SkillSmall, UserBig } from "./types";
-import { v4 as uuidv4 } from 'uuid';
+import { Resource, SkillBig, UserBig } from "./types";
 import axios from "axios";
+
+import { useUserStore } from "./stores/User";
 
 const url = "http://localhost:8080"
 
 
-const uid = "abc";
-const idToken = "";
+// const uid = "abc";
+// const idToken = "";
 
+
+export const getUserAuth = () => {
+    const userStore = useUserStore();
+
+    if (userStore.uid.length == 0 || userStore.idToken.length == 0) {
+        throw new Error("notLoggedIn")
+    }
+
+    return {
+        uid: userStore.uid,
+        idToken: userStore.idToken
+
+    }
+}
 
 export const api = axios.create({
     baseURL: url,
@@ -16,15 +30,82 @@ export const api = axios.create({
 
 })
 
+export interface Packet<T> {
+    status: "error" | "success" | "noAccount";
+    messasge: string;
+
+    data: T;
+
+
+}
+
 export namespace User {
     export const get = async (id: string): Promise<UserBig> => {
         let res = await api.get(`/user/get/${id}`);
         return res.data.data.doc;
     }
 
+    export const getUser = async (uid = getUserAuth().uid, idToken = getUserAuth().idToken): Promise<UserBig> => {
+        try {
+
+            console.log({ uid, idToken })
+            let res = await api.get(`/user/getLogin`, {
+                params: {
+                    idToken,
+                    uid
+                }
+            });
+            console.log(res.data)
+
+            let d: Packet<{
+                doc: UserBig
+            }> = res.data;
+
+            if (d.status == "noAccount") {
+                throw "noAccount";
+            }
+
+            return d.data.doc;
+
+        } catch (err) {
+            throw err;
+
+        }
+
+
+
+
+    }
+
+    export const createUser = async (name: string, iconUrl: string): Promise<UserBig> => {
+        const auth = getUserAuth();
+
+        let res = await api.post(`/user/create`, {
+            params: {
+                idToken: auth.idToken,
+                id: auth.uid,
+                name,
+                iconUrl
+            }
+        });
+
+        let d: Packet<{
+            doc: UserBig
+        }> = res.data;
+
+
+        return d.data.doc;
+    }
+
 }
 
 export namespace Skill {
+
+    export const getAll = async (): Promise<Array<SkillBig>> => {
+        let res = await api.get(`/skill/get/search`);
+        return res.data.data.docs;
+    }
+
     export const get = async (id: string): Promise<SkillBig> => {
         let res = await api.get(`/skill/get/${id}`);
         return res.data.data.doc;;
@@ -68,9 +149,11 @@ export namespace Skill {
         editorsRemoved: Array<string>
 
     ) => {
+        const auth = getUserAuth();
+
         api.post('/skill/update', {
-            id: uid,
-            idToken,
+            id: auth.uid,
+            idToken: auth.idToken,
 
             queryId,
 
@@ -106,14 +189,16 @@ export namespace Skill {
         name: string,
 
     ) => {
+        const auth = getUserAuth();
+
         const res = await api.post('/skill/create', {
             name,
-            id: uid,
-            idToken: idToken
+            id: auth.uid,
+            idToken: auth.idToken
         })
         console.log(res.data)
 
-        const data : {
+        const data: {
             status: string,
             message: string,
             data: {

@@ -4,6 +4,9 @@ import SkillView from "../views/SkillView.vue";
 import UserView from "../views/UserView.vue";
 import SkillCreateView from "../views/SkillCreateView.vue";
 import SkillEditView from "../views/SkillEditView.vue";
+import LandingView from "../views/LandingView.vue";
+import LoginView from "../views/LoginView.vue";
+import SignupView from "../views/SignupView.vue"
 
 const routes = [
     {
@@ -30,6 +33,23 @@ const routes = [
         path: '/skill/edit/:id',
         name: 'skillEdit',
         component: SkillEditView,
+    },
+
+    {
+        path: '/',
+        name: 'home',
+        component: LandingView,
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginView,
+    },
+
+    {
+        path: '/signup',
+        name: 'signup',
+        component: SignupView,
     },
     
 ];

@@ -11,10 +11,7 @@ const createSkill = async () => {
     if (name.value.length > 0) {
         const id = await Skill.create(name.value);
         router.push(`/skill/edit/${id}`);
-
     }
-
-
 }
 
 </script>

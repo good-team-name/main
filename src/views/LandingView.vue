@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { useUserStore } from '../stores/User';
+
+
 
 const router = useRouter();
 
@@ -7,13 +10,14 @@ const clickHandler = () => {
     router.push('/login')
 }
 
+
 </script>
 
 <template>
     <div class="loginMain">
         <div class="mainContainer">
             <h1 class="title">Level Up<br> Your Skills</h1>
-            <h2 class="desc">Femboy Femboy :3Femboy :3Femboy :3Femboy :3Femboy Femboy :3Femboy :3Femboy :3Femboy :3Femboy Femboy :3Femboy :3Femboy :3Femboy :3Femboy Femboy :3Femboy :3Femboy :3Femboy :3   </h2>
+            <h2 class="desc">Currently Stem Focused</h2>
             <div class="buttonContainer">
                 <button class="signUpButton" @click="clickHandler">SIGN UP</button>
                 <button class="logInButton" @click="clickHandler">LOGIN</button>
@@ -24,16 +28,12 @@ const clickHandler = () => {
 </template>
 
 <style scoped>
-@font-face{
-  font-family: "Press Start";
-  src: url("../assets/fonts/PressStart2P-Regular.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-* {
-    font-family: "Press Start"  
-}
 
 .loginMain {
+    font-family: "Press Start 2P", system-ui;
+
     background-image: url('../assets/bg_crystal.png');
     display: flex;
     flex-direction: row;
@@ -78,17 +78,13 @@ button:hover {
     transform: translateY(-8%);
 }
 
-.iconContainer { 
-    width:450px; 
-    height:450px; 
+.iconContainer {
+    width: 450px;
+    height: 450px;
     margin-left: 200px;
     margin-bottom: 100px;
-    background-image:url("../assets/landingIcon.png");
+    background-image: url("../assets/landingIcon.png");
     background-size: contain;
     object-fit: cover;
 }
-
-
-
-
 </style>

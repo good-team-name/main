@@ -3,6 +3,7 @@ import './style.scss'
 import App from './App.vue'
 import { createPinia } from 'pinia';
 import router from './router';
+import "./fb"
 
 const pinia = createPinia();
 
