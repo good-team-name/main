@@ -19,15 +19,13 @@ Our program is a webapp constructed using the framework Vue.js, with Typescript 
 
 # API
 This API allows for connection to the backend- this allows for features such as editing and addition of 'quests', logging in and registration of users, and more
-
-(ALMOST) every API request must have:
+Nearly every API request must have:
 * userId
 * oauth-token
 
 ## Endpoints
 
 ### /user
-
 
 #### GET ./get/{id}
 Gets public info for user with {id}
