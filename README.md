@@ -41,10 +41,15 @@ user: *
 #### GET ./{pathId}
 ```
 path: Path to page
+/ -> home / landing page
+/skill/:id -> skill, with unique ID
+  /skill/edit/:id -> edit a skill of id :id
+    /skill/create -> create a skill
+/user/:id -> user page, with unique user ID
+/login -> user login
+/signup -> user signup
+    
 ```
-
-
-
 
 
 
