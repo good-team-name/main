@@ -35,7 +35,7 @@ Gets public info for user with {id}
 user: UserBig
 ```
 
-##### Permissions:
+##### Permissions: 
 user: *
 
 
