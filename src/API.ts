@@ -3,7 +3,8 @@ import axios from "axios";
 
 import { useUserStore } from "./stores/User";
 
-const url = "http://localhost:8080"
+// const url = "http://localhost:8080";
+const url = "https://skill-tree-05856bfa2481.herokuapp.com"
 
 
 // const uid = "abc";
@@ -52,7 +53,7 @@ export namespace User {
             let res = await api.get(`/user/getLogin`, {
                 params: {
                     idToken,
-                    uid
+                    id: uid
                 }
             });
             console.log(res.data)
@@ -79,14 +80,15 @@ export namespace User {
 
     export const createUser = async (name: string, iconUrl: string): Promise<UserBig> => {
         const auth = getUserAuth();
+        
 
         let res = await api.post(`/user/create`, {
-            params: {
-                idToken: auth.idToken,
-                id: auth.uid,
-                name,
-                iconUrl
-            }
+            idToken: auth.idToken,
+            id: auth.uid,
+            name,
+            iconUrl
+        }, {
+            
         });
 
         let d: Packet<{

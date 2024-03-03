@@ -3,15 +3,35 @@ import { ref } from 'vue';
 import { useUserStore } from '../stores/User';
 import { storeToRefs } from 'pinia';
 import { User } from '../API';
+import { useRouter } from 'vue-router';
 
 const userStore = useUserStore();
+
+const router = useRouter();
 
 const { uid, idToken, google_user } = storeToRefs(userStore);
 
 const usernameRaw = ref("");
 
-const createUser = () => {
-    console.log(google_user.value?.photoURL)
+const createUser = async () => {
+    if (google_user.value) {
+        if (usernameRaw.value != "") {
+            const user = await User.createUser(usernameRaw.value, google_user.value.photoURL || '');
+
+            userStore.$patch({
+                user_data: user,
+
+            })
+
+            router.push(`/user/${user.id}`);
+
+        } else {
+            alert("USERNAME MUST NOT BE EMPTY")
+        }
+
+    } else {
+        userStore.logout()
+    }
 
 }
 </script>
@@ -29,10 +49,9 @@ const createUser = () => {
 </template>
 
 <style scoped lang="scss">
-
 .signupView {
     font-family: "Press Start 2P", system-ui;
-    width:100%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -53,17 +72,19 @@ const createUser = () => {
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    
+
     h1 {
         text-align: center;
     }
+
     input {
-        
+
         font-size: 40px;
         text-align: center;
 
     }
 }
+
 .startButton {
     border: 4px solid white;
     background-color: white;
@@ -75,7 +96,7 @@ const createUser = () => {
 
     &:hover {
         cursor: pointer;
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0, 0, 0, 0);
         color: white;
     }
 }
