@@ -5,6 +5,7 @@ import { Skill } from "../API"
 
 import { SkillBig, SkillSmall } from '../types';
 import { onMounted } from 'vue';
+import SkillsSelect from '../components/SkillsSelect.vue';
 
 
 const route = useRoute();
@@ -23,7 +24,6 @@ const currRoute = computed(() => {
 
 // skill.value = await Skill.get(currRoute.value);
 onMounted(async () => {
-
     Skill.get(currRoute.value).then((sk) => {
         skill.value = sk;
     })
@@ -32,7 +32,6 @@ onMounted(async () => {
 
 
 watch(selectedID, async (id) => {
-
     router.push({
         params: {
             id
@@ -52,7 +51,18 @@ const addSkill = (skillArray: Array<SkillSmall>, newSkill: SkillSmall) => {
 }
 
 const updateSkill = () => {
-    // Skill.update()
+    let s = skill.value;
+
+   
+    if (s) {
+        let preSkillsArr = s.preSkills.map((sk) => sk.id)
+        let postSkillsArr = s.postSkills.map((sk) => sk.id)
+
+        Skill.update(s.id, s.resources, s.name, s.iconUrl, s.description, preSkillsArr, postSkillsArr, [], [])
+
+    }
+
+    
 
 }
 
@@ -63,7 +73,10 @@ const updateSkill = () => {
     <div class="editViewMain" v-if="skill">
         <div class="leftSide">
             <div class="leftTop">
-                <div class="iconPic"></div>
+                <div class="iconPic">
+                    Enter URL to image:
+                    <input type="text" v-model="skill.iconUrl">
+                </div>
                 <div class="mainInfo">
                     <p class="subtitle mainInfoTitle">Name: {{ skill.name }}</p>
                     <p class="subtitle description">Description: </p>
@@ -74,30 +87,14 @@ const updateSkill = () => {
             <div class="leftBottom">
                 <div class="prereqsContainer">
                     <p class="subtitle prereqsTitle">Prerequisites</p>
-                    <ul>
-                        <li v-for="preSkill in skill.preSkills" class="skillListEntry">
-                            {{ preSkill.name }}
-                            <span class="removeSkillButton" @click="removeSkill(skill.preSkills, preSkill.id)">X</span>
-                        </li>
-                    </ul>
-                    <!-- <form @submit.prevent="addSkill(skill.preSkills, newPrereqSkill)">
-                        <input class="addSkillForm" type="text" placeholder="Add a skill!"
-                            v-model="newPrereqSkill"></input>
-                    </form> -->
+                    
+                    <SkillsSelect v-model="skill.preSkills"></SkillsSelect>
                 </div>
 
                 <div class="unlocksContainer">
                     <p class="subtitle unlocksTitle">Unlocks</p>
-                    <ul>
-                        <li v-for="postSkill in skill.postSkills" class="skillListEntry">
-                            {{ postSkill.name }}
-                            <span class="removeSkillButton" @click="removeSkill(skill.postSkills, postSkill.id)">X</span>
-                        </li>
-                    </ul>
-                    <!-- <form @submit.prevent="addSkill(skill.postSkills, newUnlockSkill)">
-                        <input class="addSkillForm" type="text" placeholder="Add a skill!"
-                            v-model="newUnlockSkill"></input>
-                    </form> -->
+                    <SkillsSelect v-model="skill.postSkills"></SkillsSelect>
+
                 </div>
             </div>
         </div>
@@ -106,7 +103,7 @@ const updateSkill = () => {
             <p class="subtitle resourcesTitle"></p>
         </div>
 
-        <div class="createButton" @click="updateSkill">Create!</div>
+        <div class="createButton" @click="updateSkill">Save!</div>
     </div>
 </template>
 
@@ -159,9 +156,18 @@ const updateSkill = () => {
 .iconPic {
     width: 80%;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .prereqsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 100%;
+    overflow-y: scroll;
     position: relative;
     background-color: #FFF4D7;
     width: 100%;
@@ -174,6 +180,11 @@ const updateSkill = () => {
 }
 
 .unlocksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 100%;
+    overflow-y: scroll;
     position: relative;
     background-color: #FFF4D7;
     width: 100%;
@@ -219,6 +230,7 @@ ul {
     bottom: 10px;
     right: 10px;
     background-color: white;
+    border: 3px solid white;
     color: black;
     padding: 10px;
     border-radius: 4px;
@@ -226,6 +238,9 @@ ul {
 
     &:hover {
         cursor: pointer;
+        background-color: rgba(0,0,0,0);
+        color: white;
+
     }
 
 }

@@ -1,4 +1,4 @@
-import { Resource, SkillBig, UserBig } from "./types";
+import { Resource, SkillBig, SkillSmall, UserBig } from "./types";
 import axios from "axios";
 
 import { useUserStore } from "./stores/User";
@@ -103,9 +103,11 @@ export namespace User {
 
 export namespace Skill {
 
-    export const getAll = async (): Promise<Array<SkillBig>> => {
-        let res = await api.get(`/skill/get/search`);
-        return res.data.data.docs;
+    export const getAll = async (): Promise<Record<string, SkillSmall>> => {
+        let res = await api.get(`/skill/search`);
+        console.log(res)
+        let data : Packet<{docs: Record<string, SkillBig>}> = res.data;
+        return data.data.docs;
     }
 
     export const get = async (id: string): Promise<SkillBig> => {
