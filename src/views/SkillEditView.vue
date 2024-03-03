@@ -6,6 +6,7 @@ import { Skill } from "../API"
 import { SkillBig, SkillSmall } from '../types';
 import { onMounted } from 'vue';
 import SkillsSelect from '../components/SkillsSelect.vue';
+import ResourceEditor from '../components/ResourceEditor.vue';
 
 
 const route = useRoute();
@@ -52,11 +53,14 @@ const addSkill = (skillArray: Array<SkillSmall>, newSkill: SkillSmall) => {
 
 const updateSkill = () => {
     let s = skill.value;
+    console.log("AI")
+    console.log(s)
 
    
     if (s) {
-        let preSkillsArr = s.preSkills.map((sk) => sk.id)
-        let postSkillsArr = s.postSkills.map((sk) => sk.id)
+        let preSkillsArr = s.preSkills.map((sk) => sk.id);
+        let postSkillsArr = s.postSkills.map((sk) => sk.id);
+        
 
         Skill.update(s.id, s.resources, s.name, s.iconUrl, s.description, preSkillsArr, postSkillsArr, [], [])
 
@@ -100,7 +104,8 @@ const updateSkill = () => {
         </div>
 
         <div class="resources">
-            <p class="subtitle resourcesTitle"></p>
+            <ResourceEditor v-model="skill.resources"></ResourceEditor>
+
         </div>
 
         <div class="createButton" @click="updateSkill">Save!</div>
@@ -160,13 +165,16 @@ const updateSkill = () => {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    input {
+        width: 300px;
+    }
 }
 
 .prereqsContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 100%;
+    max-height: 40vh;
     overflow-y: scroll;
     position: relative;
     background-color: #FFF4D7;
@@ -183,7 +191,7 @@ const updateSkill = () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 100%;
+    max-height: 40vh;
     overflow-y: scroll;
     position: relative;
     background-color: #FFF4D7;

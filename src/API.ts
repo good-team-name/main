@@ -155,6 +155,7 @@ export namespace Skill {
     ) => {
         const auth = getUserAuth();
 
+
         api.post('/skill/update', {
             id: auth.uid,
             idToken: auth.idToken,
