@@ -18,8 +18,8 @@ onMounted(() => {
 <template>
   <div class="topbar">
     <div @click="router.push('/')" class="logo-image"></div>
-    <div class="userTopbar" v-if="userStore.loggedIn">
-      
+    <div @click="router.push(`/user/${userStore.user_data.id}`)" :style="`background-image: url(${userStore.user_data.iconUrl})`" class="userTopbar"
+      v-if="userStore.user_data && userStore.loggedIn">
     </div>
 
   </div>
@@ -32,11 +32,20 @@ onMounted(() => {
 .userTopbar {
   background-color: white;
   border-radius: 100px;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   position: fixed;
   right: 10px;
-  top: 10px;
+  // top: 10px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  
 }
 
 .topbar {
@@ -44,6 +53,7 @@ onMounted(() => {
   background: url('./assets/topbar.png');
   background-size: cover;
   height: 14vh;
+  align-items: center;
   // margin-bottom: 2vh;
   padding: 4px;
   display: flex;
@@ -56,6 +66,7 @@ onMounted(() => {
 
 
     background-image: url('./assets/logocolor.png');
+
 
 
     height: 10vh;

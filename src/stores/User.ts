@@ -34,10 +34,9 @@ export const useUserStore = defineStore("user", () => {
                     idToken.value = token;
 
                     try {
-                        let ud = await User.getUser();
+                        let ud = await User.getUser(uid.value, idToken.value);
                         user_data.value = ud;
-                       
-                        router.push(`/user/${ud.id}`);
+                    
 
                     } catch (err: any) {
 
