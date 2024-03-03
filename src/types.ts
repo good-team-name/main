@@ -9,6 +9,7 @@
     export interface UserBig extends UserSmall {
         admin: boolean;
         skillsCompleted: Array<SkillSmall>;
+        contributions: number;
     }
 
 

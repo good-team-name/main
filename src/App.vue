@@ -21,7 +21,7 @@ onMounted(() => {
 
     <div class="nav">
       <div class="navLink" @click="router.push('/')">Home</div>
-      <div class="navLink" @click="router.push('/skill')">Skills</div>
+      <div class="navLink" @click="router.push('/skill/create')">Skills</div>
       <div class="navLink" @click="router.push('/path')">Paths</div>
 
     </div>
@@ -113,6 +113,24 @@ onMounted(() => {
 .nav {
   font-family: "Press Start 2P", system-ui;;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 30vw;
+  justify-content: space-evenly;
+
+  .navLink {
+    text-shadow: 2px 2px  black;
+    user-select: none;
+    transition: 0.2s;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+      text-shadow: none;
+      
+
+
+    }
+
+  }
 }
 </style>

@@ -67,18 +67,21 @@ watch(currRoute, () => {
 
 <div class="userViewMain" v-if="user">
     <div class="userContainer">
-        <div class="profilePicContainer">
+        <div class="profilePicContainer" :style="`background-image: url(${user.iconUrl})`" >
             
         </div>  
+        
         <div class="userName">
-            Placeholder
+            {{user.name}}
         </div>
         <div class="userStatsContainer">
-            <div class="userFriends">
-                Friends:<br> <span class="stat">10</span>
-            </div>
+            
             <div class="userContributions">
-                Contributions:<br> <span class="stat">10</span>
+                Contributions:<br> <span class="stat">{{user.contributions}}</span>
+            </div>
+
+            <div class="userFriends" v-if="user.admin">
+                 <span class="stat">Admin User!</span>
             </div>
         </div>
     </div>
@@ -105,6 +108,8 @@ watch(currRoute, () => {
     color: #F595CF;
 }
 
+
+
 .userViewMain {
     width: 100%;
     height: 100%;
@@ -117,11 +122,26 @@ watch(currRoute, () => {
     align-items: center;
 }
 
+.profilePicContainer {
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
 .userContainer {
     background-color: #2B2038;
     outline: 6px solid #FFCAEA;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 50px;
     max-height: 500px;
 }
@@ -150,3 +170,17 @@ watch(currRoute, () => {
 .stat {
     font-size: 1.5rem;
 }
+
+.userView {
+    background-image: url('../assets/waterBG.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+</style>
